@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">Lista de Contratos </h1>
+        </div>
+        <div class="panel-body">
+             <table id="tabla" class="table table-striped table-hover" width="100%">
+                <thead>
+    <tr>
+      <th>Inquilino</th>
+      <th>Departamento</th>
+      <th>Precio del DPTO</th>
+      <th>Fecha contrato</th>
+      <th>Inicio contrato</th>
+      <th>Fin contrato</th>
+      <th>Vencimiento de Cuota</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contratos.each do |contrato| %>
+      <tr>
+        <td class="text-uppercase"><%= contrato.inquilino.nombre %></td>
+        <td class="text-uppercase"><%= contrato.departamento.nombre_departamento %></td>
+        <td><%= number_with_precision(contrato.departamento.precio, precision: 0, separator: ',', delimiter: '.') %></td>
+        <td><%= contrato.fecha_contrato %></td>
+        <td><%= contrato.inicio_contrato %></td>
+        <td><%= contrato.fin_contrato %></td>
+        <td><%= contrato.vencimiento %></td>
+        <td><%= link_to glyph(:eye_open)+'', contrato %></td>
+        <td><%= link_to glyph(:pencil)+'', edit_contrato_path(contrato) %></td>
+        <td><%= link_to glyph(:remove)+'', contrato, method: :delete, data: { confirm: 'ESTAS SEGURO?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Contrato', new_contrato_path ,class: 'btn btn-success btn-sm pull-left' %>

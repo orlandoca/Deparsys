@@ -1,0 +1,39 @@
+<div class="panel panel-primary text-uppercase">
+    <div class="panel-body">
+        <%= form_for(@inquilino) do |f| %>
+        <% if @inquilino.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@inquilino.errors.count, "error") %> prohibited this inquilino from being saved:</h2>
+            <ul>
+                <% @inquilino.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+        <div class="field">
+            <%= f.label :cedula %><br>
+            <%= f.number_field :cedula, class: "form-control "%>
+        </div>
+        <div class="field">
+            <%= f.label :nombre %><br>
+            <%= f.text_field :nombre, class: "form-control text-uppercase"%>
+        </div>
+        <div class="field">
+            <%= f.label :apellido %><br>
+            <%= f.text_field :apellido , class: "form-control text-uppercase"%>
+        </div>
+        <div class="field">
+            <%= f.label :telefono %><br>
+            <%= f.number_field :telefono, class: "form-control"%>
+        </div>
+        <div class="field">
+            <%= f.label :email %><br>
+            <%= f.text_field :email, class: "form-control text-uppercase "%>
+        </div>
+        <div class="actions">
+            <%= f.submit %>
+        </div>
+        <% end %>
+    </div>
+</div>

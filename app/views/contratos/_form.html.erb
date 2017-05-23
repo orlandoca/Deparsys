@@ -1,0 +1,45 @@
+<div class="panel panel-primary ">
+    <div class="panel-body">
+        <%= form_for(@contrato) do |f| %>
+        <% if @contrato.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(@contrato.errors.count, "error") %> prohibited this contrato from being saved:</h2>
+            <ul>
+                <% @contrato.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+
+        <div class="field">
+            <%= f.label :inquilino_id, "Elige Inquiliino" %><br>   
+            <%= f.collection_select(:inquilino_id, Inquilino.all, :id, :nombre, { prompt: true },{class: 'form-control input-sm text-uppercase'}) %>        </div>
+
+             <div class="field">
+                <%= f.label :departamento_id, "Elige departamento con su precio" %><br>  
+            <% departamentos_array = Departamento.where(:estado => 0).map { |departamento| [" #{departamento.edificio.nombre_edificio} , #{departamento.nombre_departamento} , #{departamento.precio} ", departamento.id ] }  %>
+            <%= f.select(:departamento_id, options_for_select(departamentos_array), {prompt: true}, {class: 'form-control input-sm text-uppercase'})  %>
+        </div>
+
+    
+        <div class="field">
+            <%= f.label :fecha_contrato %><br>
+            <%= f.date_select :fecha_contrato , class: "form-control input-sm text-uppercase "%>
+        </div>
+        
+        <div class="field">
+            <%= f.label :inicio_contrato %><br>
+            <%= f.date_select :inicio_contrato , class: "form-control text-uppercase " %>
+        </div>
+         
+        
+
+
+
+        <div class="actions">
+            <%= f.submit %>
+        </div>
+        <% end %>
+    </div>
+</div>

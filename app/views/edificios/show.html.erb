@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre Edificio:</strong>
+  <%= @edificio.nombre_edificio %>
+</p>
+
+<p>
+  <strong>Nombre Propietario:</strong>
+  <%= @edificio.nombre_propietario %>
+</p>
+
+<p>
+  <strong>Direccion:</strong>
+  <%= @edificio.direccion %>
+</p>
+
+<%= link_to glyph(:pencil) + 'Editar', edit_edificio_path(@edificio) %> |
+<%= link_to 'Back', edificios_path %>

@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cedula:</strong>
+  <%= @inquilino.cedula %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @inquilino.nombre %>
+</p>
+
+<p>
+  <strong>Apellido:</strong>
+  <%= @inquilino.apellido %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @inquilino.telefono %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @inquilino.email %>
+</p>
+
+
+<%= link_to glyph(:pencil) + 'Editar', edit_inquilino_path(@inquilino) %> |
+<%= link_to 'Back', inquilinos_path %>
+
+

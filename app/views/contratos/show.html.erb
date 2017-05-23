@@ -1,0 +1,76 @@
+
+<%= link_to glyph(:pencil) + 'Editar', edit_contrato_path(@contrato) %> |
+<%= link_to 'Back', contratos_path %>
+<div class="col-xs-12">
+    <div class="invoice-title">
+        <h2>CONTRATO</h2>
+        <h3 class="pull-right">Order # 12345</h3>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-xs-12">
+            <address>
+                <strong>INQUILINO:</strong><br>
+                <%= @contrato.inquilino.nombre %>
+                <%= @contrato.inquilino.apellido %> <br>
+            </address>
+        </div>
+        <div class="col-lg-4 col-md-4 col-xs-12 ">
+            <address>
+                <strong>DEPARTAMENTO:</strong><br>
+               NOMBRE: <%= @contrato.departamento.nombre_departamento %>
+            </address>
+            <address>
+                <strong> EDIFICIO</strong><br>
+                NOMBRE: <%= @contrato.departamento.edificio.nombre_edificio %>
+            </address>
+        </div>
+       <div class="col-lg-4 col-md-4 col-xs-12">
+            <address>
+                <strong>FECHA CONTRATO:</strong><br>
+                <%= @contrato.fecha_contrato %><br><br>
+            </address>
+            <address>
+                <strong>FIN CONTRATO:</strong><br>
+                <%= @contrato.fin_contrato %><br><br>
+            </address>
+        </div>
+    </div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><strong>DETALLES DEL CONTRATO</strong></h3>
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-condensed table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <td class="text-center"><strong>CUOTA</strong></td>
+                            <td class="text-center"><strong>MONTO</strong></td>
+                            <td class="text-center"><strong>VENCIMIENTO</strong></td>
+                            <td class="text-center"><strong>ESTADO</strong></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <% @contrato.movimientos.each do |movimiento| %>
+                        <tr>
+                            <td class="text-center"><%= movimiento.cuota %></td>
+                           <td class="text-center"><%= number_with_precision(movimiento.monto, precision: 0, separator: ',', delimiter: '.') %></td>
+                            <td class="text-center"><%= movimiento.vencimiento %></td>
+                            <% if movimiento.estado %>
+                              <td class="text-center"><label class="label label-success">Pagado</label></td>
+                            <% else %>
+                              <td class="text-center"><label class="label label-warning">Pendiente</label></td>
+                            <% end %>
+                        </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

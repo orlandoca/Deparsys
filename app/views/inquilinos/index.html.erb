@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">Lista de Inquilinos</h1>
+        </div>
+        <div class="panel-body">
+            <table id="tabla" class="table table-striped table-hover" width="100%">
+                <thead>
+                    <tr>
+                        <th>Cedula</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Telefono</th>
+                        <th>Email</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @inquilinos.each do |inquilino| %>
+                    <tr>
+                        <td><%= number_with_precision(inquilino.cedula, precision: 0, separator: ',', delimiter: '.') %></td>
+                        <td class="text-uppercase"><%= inquilino.nombre %></td>
+                        <td class="text-uppercase"><%= inquilino.apellido %></td>
+                        <td><%= number_with_precision(inquilino.telefono, precision: 0, separator: ',', delimiter: '.') %></td>
+                        <td class="text-uppercase"><%= inquilino.email %></td>
+                        <td><%= link_to glyph(:eye_open)+'', inquilino %></td>
+                        <td><%= link_to glyph(:pencil)+'', edit_inquilino_path(inquilino) %></td>
+                        <td><%= link_to glyph(:remove)+'', inquilino, method: :delete, data: { confirm: 'ESTAS SEGURO?' } %></td>
+                    </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<%= link_to 'Nuevo Inquilino', new_inquilino_path ,class: 'btn btn-success btn-sm pull-left' %>
+
