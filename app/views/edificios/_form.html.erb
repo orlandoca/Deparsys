@@ -14,19 +14,32 @@
 
         <div class="field">
             <%= f.label :nombre_edificio %><br>
-            <%= f.text_field :nombre_edificio, class: "form-control text-uppercase"%>
+            <%= f.text_field :nombre_edificio, class: "form-control input-sm"%>
         </div>
         <div class="field">
             <%= f.label :nombre_propietario %><br>
-            <%= f.text_field :nombre_propietario, class: "form-control text-uppercase"%>
+            <%= f.text_field :nombre_propietario, class: "form-control input-sm"%>
         </div>
         <div class="field">
             <%= f.label :direccion %><br>
-            <%= f.text_field :direccion , class: "form-control text-uppercase"%>
+            <%= f.text_field :direccion , class: "form-control input-sm"%>
         </div>
         <div class="actions">
             <%= f.submit %>
         </div>
-        <% end %>
+
+          <div class="col-lg-12">
+            <%= f.nested_fields_for :departamentos,  layout: :inline do |ff| %>
+                <%= ff.hidden_field :departamento_id %>
+                <div class="form-group col-lg-4">
+                  <%= ff.text_field :nombre_departamento, placeholder: 'nombre', class: 'form-control input-sm' %>
+                </div>
+            <% end %>
+          </div>
+
+          <% end %>
     </div>
+
+
+
 </div>

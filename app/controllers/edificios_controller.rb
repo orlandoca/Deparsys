@@ -69,6 +69,6 @@ class EdificiosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def edificio_params
-      params.require(:edificio).permit(:nombre_edificio, :nombre_propietario, :direccion)
+      params.require(:edificio).permit(:nombre_edificio, :nombre_propietario, :direccion, departamentos: [ :departamento_id, :nombre_departamento, :precio, :descripcion, :_destroy ])
     end
 end

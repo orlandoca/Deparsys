@@ -1,7 +1,8 @@
 class Departamento < ActiveRecord::Base
-	
+
 	belongs_to :edificio
 	has_many :contratos
+	has_many :recibos
 
 	validates :nombre_departamento, presence: true
 
@@ -12,8 +13,9 @@ class Departamento < ActiveRecord::Base
 	validates :precio, length: { maximum: 10 }
 
 
-  	validates :descripcion, presence: true
-  	
-  	
+	validates :descripcion, presence: true
+
+
+
 end
 
