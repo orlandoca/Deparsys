@@ -13,23 +13,23 @@
         <% end %>
         <div class="field">
             <%= f.label :cedula %><br>
-            <%= f.number_field :cedula, class: "form-control input-sm "%>
+            <%= f.number_field :cedula,placeholder: 'Cedula' ,class: "form-control input-sm "%>
         </div>
         <div class="field">
             <%= f.label :nombre %><br>
-            <%= f.text_field :nombre, class: "form-control input-sm"%>
+            <%= f.text_field :nombre, placeholder: 'Nombres ', class: "form-control input-sm"%>
         </div>
         <div class="field">
             <%= f.label :apellido %><br>
-            <%= f.text_field :apellido , class: "form-control input-sm"%>
+            <%= f.text_field :apellido ,placeholder: 'Apellidos', class: "form-control input-sm"%>
         </div>
         <div class="field">
             <%= f.label :telefono %><br>
-            <%= f.number_field :telefono, class: "form-control input-sm"%>
+            <%= f.number_field :telefono, placeholder: 'Telefono',class: "form-control input-sm"%>
         </div>
         <div class="field">
             <%= f.label :email %><br>
-            <%= f.text_field :email, class: "form-control input-sm "%>
+            <%= f.text_field :email, placeholder: 'Email', class: "form-control input-sm "%>
         </div>
         <div class="actions">
             <%= f.submit %>

@@ -14,12 +14,12 @@
 
         <div class="field">
             <%= f.label :inquilino_id, "Elige Inquiliino" %><br>   
-            <%= f.collection_select(:inquilino_id, Inquilino.all, :id, :nombre, { prompt: true },{class: 'form-control input-sm text-uppercase'}) %>        </div>
+            <%= f.collection_select(:inquilino_id, Inquilino.all, :id, :nombre, { prompt: true },{class: 'form-control input-sm '}) %>        </div>
 
              <div class="field">
                 <%= f.label :departamento_id, "Elige departamento con su precio" %><br>  
             <% departamentos_array = Departamento.where(:estado => 0).map { |departamento| [" #{departamento.edificio.nombre_edificio} , #{departamento.nombre_departamento} , #{departamento.precio} ", departamento.id ] }  %>
-            <%= f.select(:departamento_id, options_for_select(departamentos_array), {prompt: true}, {class: 'form-control input-sm text-uppercase'})  %>
+            <%= f.select(:departamento_id, options_for_select(departamentos_array), {prompt: true}, {class: 'form-control input-sm '})  %>
         </div>
 
     
@@ -32,7 +32,11 @@
             <%= f.label :inicio_contrato %><br>
             <%= f.date_select :inicio_contrato , class: "form-control input-sm  " %>
         </div>
-         
+
+          <div class="field">
+            <%= f.label :fin_contrato %><br>
+            <%= f.date_select :fin_contrato , class: "form-control input-sm  " %>
+          </div>
         
 
 
