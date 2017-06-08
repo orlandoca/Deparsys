@@ -46,9 +46,11 @@
         </div>
         <div class="panel-body">
             <div class="table-responsive">
+              <%= form_tag pagar_movimientos_path, method: :put  do %>
                 <table class="table table-condensed table-hover table-striped">
                     <thead>
                         <tr>
+                            <td></td>
                             <td class="text-center"><strong>CUOTA</strong></td>
                             <td class="text-center"><strong>MONTO</strong></td>
                             <td class="text-center"><strong>VENCIMIENTO</strong></td>
@@ -56,10 +58,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                            <% @contrato.movimientos.each do |movimiento| %>
+                            <%  @contrato.movimientos.each do |movimiento| %>
                         <tr>
+                            <td><%= check_box_tag "movimientos_id[]", movimiento.id %></td>
                             <td class="text-center"><%= movimiento.cuota %></td>
-                           <td class="text-center"><%= number_with_precision(movimiento.monto, precision: 0, separator: ',', delimiter: '.') %></td>
+                            <td class="text-center"><%= number_with_precision(movimiento.monto, precision: 0, separator: ',', delimiter: '.') %></td>
                             <td class="text-center"><%= movimiento.vencimiento %></td>
                             <% if movimiento.estado %>
                               <td class="text-center"><label class="label label-success">Pagado</label></td>
@@ -70,6 +73,8 @@
                         <% end %>
                     </tbody>
                 </table>
+              <%= submit_tag "Pagar seleccionados"%>
+              <% end %>
             </div>
         </div>
     </div>

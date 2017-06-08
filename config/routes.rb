@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  
-  resources :movimientos
+
+  resources :detalle_recibos
+  resources :recibos
+  resources :movimientos do
+    collection do
+      put :pagar
+    end
+  end
   resources :departamentos
   resources :contratos
   

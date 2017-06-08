@@ -61,6 +61,22 @@ class MovimientosController < ApplicationController
     end
   end
 
+  def pagar
+    recibo = Recibo.new
+    params[:movimientos_id].each do |id|
+      movimiento = Movimiento.find(id)
+      recibo = Recibo.create!(contrato_id: movimiento.contrato_id)
+      detalle_recibo = DetalleRecibo.create!(recibo_id: recibo.id, cuota: movimiento.cuota, descripcion: "pago de cuota numero: #{movimiento.cuota}" , total: movimiento.monto)
+      movimiento.update(estado: true)
+
+    end
+    respond_to do |format|
+      format.html { redirect_to recibo, notice: 'Movimiento was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_movimiento

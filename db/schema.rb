@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161028020429) do
+ActiveRecord::Schema.define(version: 20170605233919) do
 
   create_table "contratos", force: :cascade do |t|
     t.integer  "inquilino_id",    limit: 4
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20161028020429) do
   end
 
   add_index "departamentos", ["edificio_id"], name: "departamentos_edificio_id_fk", using: :btree
+
+  create_table "detalle_recibos", force: :cascade do |t|
+    t.integer  "recibo_id",   limit: 4
+    t.integer  "cuota",       limit: 4
+    t.string   "descripcion", limit: 255
+    t.integer  "total",       limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
 
   create_table "edificios", force: :cascade do |t|
     t.string   "nombre_edificio",    limit: 255
@@ -84,6 +93,15 @@ ActiveRecord::Schema.define(version: 20161028020429) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
+
+  create_table "recibos", force: :cascade do |t|
+    t.integer  "contrato_id", limit: 4
+    t.date     "fecha"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "recibos", ["contrato_id"], name: "recibos_contrato_id_fk", using: :btree
 
   create_table "usuarios", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
