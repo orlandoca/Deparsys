@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :cajas
   resources :detalle_recibos
   resources :recibos
   resources :movimientos do

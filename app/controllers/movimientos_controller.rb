@@ -63,15 +63,22 @@ class MovimientosController < ApplicationController
 
   def pagar
     recibo = Recibo.new
+    movimiento= Movimiento.new
+
     params[:movimientos_id].each do |id|
       movimiento = Movimiento.find(id)
-      recibo = Recibo.create!(contrato_id: movimiento.contrato_id)
-      detalle_recibo = DetalleRecibo.create!(recibo_id: recibo.id, cuota: movimiento.cuota, descripcion: "pago de cuota numero: #{movimiento.cuota}" , total: movimiento.monto)
+    end
+
+    recibo = Recibo.create!(contrato_id: movimiento.contrato_id)
+    params[:movimientos_id].each do |id|
+      movimiento = Movimiento.find(id)
+      detalle_recibo = DetalleRecibo.create!(recibo_id: recibo.id, cuota: movimiento.cuota, descripcion: "PAGO DE CUOTA NUMERO:  #{movimiento.cuota}" , total: movimiento.monto)
       movimiento.update(estado: true)
 
     end
+
     respond_to do |format|
-      format.html { redirect_to recibo, notice: 'Movimiento was successfully destroyed.' }
+      format.html { redirect_to recibo, notice: 'SE HA GENERADO EXITOSAMENTE EL RECIBO.' }
       format.json { head :no_content }
     end
   end

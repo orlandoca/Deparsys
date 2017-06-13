@@ -4,7 +4,7 @@
 <div class="col-xs-12">
     <div class="invoice-title">
         <h2>CONTRATO</h2>
-        <h3 class="pull-right"> <%= @contrato.id %></h3>
+        <h3 class="pull-right"> NUMERO CONTRATO: 00<%= @contrato.id %></h3>
     </div>
     <hr>
     <div class="row">
@@ -28,11 +28,11 @@
        <div class="col-lg-4 col-md-4 col-xs-12">
             <address>
                 <strong>FECHA CONTRATO:</strong><br>
-                <%= @contrato.fecha_contrato %><br><br>
+                <%= @contrato.fecha_contrato.strftime("%m/%d/%Y") %><br><br>
             </address>
             <address>
                 <strong>FIN CONTRATO:</strong><br>
-                <%= @contrato.fin_contrato %><br><br>
+                <%= @contrato.fin_contrato.strftime("%m/%d/%Y") %><br><br>
             </address>
         </div>
     </div>
@@ -63,7 +63,7 @@
                             <td><%= check_box_tag "movimientos_id[]", movimiento.id %></td>
                             <td class="text-center"><%= movimiento.cuota %></td>
                             <td class="text-center"><%= number_with_precision(movimiento.monto, precision: 0, separator: ',', delimiter: '.') %></td>
-                            <td class="text-center"><%= movimiento.vencimiento %></td>
+                            <td class="text-center"><%= movimiento.vencimiento.strftime("%m/%d/%Y") %></td>
                             <% if movimiento.estado %>
                               <td class="text-center"><label class="label label-success">Pagado</label></td>
                             <% else %>

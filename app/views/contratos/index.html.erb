@@ -14,7 +14,6 @@
       <th>Fecha contrato</th>
       <th>Inicio contrato</th>
       <th>Fin contrato</th>
-      <th>Vencimiento de Cuota</th>
       <th></th>
       <th></th>
       <th></th>
@@ -28,10 +27,9 @@
         <td><%= contrato.inquilino.nombre %></td>
         <td><%= contrato.departamento.nombre_departamento %></td>
         <td><%= number_with_precision(contrato.departamento.precio, precision: 0, separator: ',', delimiter: '.') %></td>
-        <td><%= contrato.fecha_contrato %></td>
-        <td><%= contrato.inicio_contrato %></td>
-        <td><%= contrato.fin_contrato %></td>
-        <td><%= contrato.vencimiento %></td>
+        <td><%= contrato.fecha_contrato.strftime("%m/%d/%Y") %></td>
+        <td><%= contrato.inicio_contrato.strftime("%m/%d/%Y") %></td>
+        <td><%= contrato.fin_contrato.strftime("%m/%d/%Y") %></td>
         <td><%= link_to glyph(:eye_open)+'', contrato %></td>
         <td><%= link_to glyph(:pencil)+'', edit_contrato_path(contrato) %></td>
         <td><%= link_to glyph(:remove)+'', contrato, method: :delete, data: { confirm: 'ESTAS SEGURO?' } %></td>

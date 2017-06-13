@@ -94,6 +94,11 @@ class ContratosController < ApplicationController
     end
   end
 
+  def diferencia_meses(fecha_inicio, fecha_fin)
+    contador_meses = (fecha_fin.year == fecha_inicio.year) ? (fecha_fin.month - fecha_inicio.month) : (12 - fecha_inicio.month + fecha_fin.month)
+    contador_meses
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contrato
