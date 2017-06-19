@@ -35,33 +35,14 @@ class ContratosController < ApplicationController
         @departamento = Departamento.find_by(id: @contrato.departamento_id)
         @departamento.update(estado: 1)
         @fecha = @contrato.inicio_contrato
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 1, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 2, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 3, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 4, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 5, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 6, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 7, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 8, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 9, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 10, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 11, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @fecha = @fecha + 1.months 
-        @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota: 12, monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
-        @movimiento.save 
-        @fecha = @fecha + 1.months 
+        cantidadmeses= ((@contrato.fin_contrato.year * 12 + @contrato.fin_contrato.month) - (@contrato.inicio_contrato.year * 12 + @contrato.inicio_contrato.month))
+        for i in 1..cantidadmeses do
+          @movimiento = Movimiento.create(contrato_id: @contrato.id, cuota:i , monto: @contrato.departamento.precio , vencimiento: @fecha + 1.months , estado: 0)
+          @fecha = @fecha + 1.months
+        end
+        @movimiento.save
         @contrato.update(fin_contrato: @fecha)
-        format.html { redirect_to @contrato, notice: 'Contrato was successfully created.' }
+        format.html { redirect_to @contrato, notice: 'Contrato creado exitosamente.' }
         format.json { render :show, status: :created, location: @contrato }
       else
         format.html { render :new }
@@ -94,10 +75,6 @@ class ContratosController < ApplicationController
     end
   end
 
-  def diferencia_meses(fecha_inicio, fecha_fin)
-    contador_meses = (fecha_fin.year == fecha_inicio.year) ? (fecha_fin.month - fecha_inicio.month) : (12 - fecha_inicio.month + fecha_fin.month)
-    contador_meses
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

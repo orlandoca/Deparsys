@@ -2,8 +2,7 @@ class CreateCajas < ActiveRecord::Migration
   def change
     create_table :cajas do |t|
       t.integer :usuario_id
-      t.dateTime :fecha_apertura
-      t.dateTime :fecha_cierre
+      t.datetime :fecha_cierre
       t.integer :apertura
       t.integer :cierre
       t.integer :entrada

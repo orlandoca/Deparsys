@@ -18,7 +18,7 @@ class CajasControllerTest < ActionController::TestCase
 
   test "should create caja" do
     assert_difference('Caja.count') do
-      post :create, caja: { apertura: @caja.apertura, cierre: @caja.cierre, entrada: @caja.entrada, estado: @caja.estado, fecha_apertura: @caja.fecha_apertura, fecha_cierre: @caja.fecha_cierre, salida: @caja.salida, usuario_id: @caja.usuario_id }
+      post :create, caja: { apertura: @caja.apertura, cierre: @caja.cierre, entrada: @caja.entrada, estado: @caja.estado, fecha_cierre: @caja.fecha_cierre, salida: @caja.salida, usuario_id: @caja.usuario_id }
     end
 
     assert_redirected_to caja_path(assigns(:caja))
@@ -35,7 +35,7 @@ class CajasControllerTest < ActionController::TestCase
   end
 
   test "should update caja" do
-    patch :update, id: @caja, caja: { apertura: @caja.apertura, cierre: @caja.cierre, entrada: @caja.entrada, estado: @caja.estado, fecha_apertura: @caja.fecha_apertura, fecha_cierre: @caja.fecha_cierre, salida: @caja.salida, usuario_id: @caja.usuario_id }
+    patch :update, id: @caja, caja: { apertura: @caja.apertura, cierre: @caja.cierre, entrada: @caja.entrada, estado: @caja.estado, fecha_cierre: @caja.fecha_cierre, salida: @caja.salida, usuario_id: @caja.usuario_id }
     assert_redirected_to caja_path(assigns(:caja))
   end
 

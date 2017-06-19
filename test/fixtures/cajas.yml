@@ -2,8 +2,7 @@
 
 one:
   usuario_id: 1
-  fecha_apertura: 
-  fecha_cierre: 
+  fecha_cierre: 2017-06-13 20:38:32
   apertura: 1
   cierre: 1
   entrada: 1
@@ -12,8 +11,7 @@ one:
 
 two:
   usuario_id: 1
-  fecha_apertura: 
-  fecha_cierre: 
+  fecha_cierre: 2017-06-13 20:38:32
   apertura: 1
   cierre: 1
   entrada: 1

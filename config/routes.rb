@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :mov_cajas
+  resources :cajas
   resources :cajas
   resources :detalle_recibos
   resources :recibos

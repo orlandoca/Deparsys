@@ -68,13 +68,20 @@ class MovimientosController < ApplicationController
     params[:movimientos_id].each do |id|
       movimiento = Movimiento.find(id)
     end
-
+    #creamos el recibo de pago y actualizamos el movimiento
     recibo = Recibo.create!(contrato_id: movimiento.contrato_id)
     params[:movimientos_id].each do |id|
       movimiento = Movimiento.find(id)
       detalle_recibo = DetalleRecibo.create!(recibo_id: recibo.id, cuota: movimiento.cuota, descripcion: "PAGO DE CUOTA NUMERO:  #{movimiento.cuota}" , total: movimiento.monto)
       movimiento.update(estado: true)
 
+    end
+    #cambiar estado al pagar la ultima cuota del departamente a disponible
+    mov = Movimiento.where(recibo_id: recibo.id).where(estado: false)
+    contrato = Contrato.find(movimiento.contrato_id)
+    departamento = Departamento.find(contrato.departamento_id)
+    if (mov != nil)
+        departamento.update(estado: false)
     end
 
     respond_to do |format|
