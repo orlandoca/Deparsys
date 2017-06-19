@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Usuario:</strong>
+  <%= @caja.usuario_id %>
+</p>
+
+<p>
+  <strong>Fecha cierre:</strong>
+  <%= @caja.fecha_cierre %>
+</p>
+
+<p>
+  <strong>Apertura:</strong>
+  <%= @caja.apertura %>
+</p>
+
+<p>
+  <strong>Cierre:</strong>
+  <%= @caja.cierre %>
+</p>
+
+<p>
+  <strong>Entrada:</strong>
+  <%= @caja.entrada %>
+</p>
+
+<p>
+  <strong>Salida:</strong>
+  <%= @caja.salida %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @caja.estado %>
+</p>
+
+<%= link_to 'Edit', edit_caja_path(@caja) %> |
+<%= link_to 'Back', cajas_path %>
