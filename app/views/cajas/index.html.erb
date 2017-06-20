@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Cajas</h1>
-
-<table>
+<div class="col-md-12">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1 class="panel-title">LISTA DE  CAJAS </h1>
+    </div>
+    <div class="panel-body">
+      <div class="table-responsive">
+        <table id="tabla" class="table table-bordered table-hover table-striper table-condensed" width="100%">
   <thead>
     <tr>
       <th>Usuario</th>
@@ -12,7 +16,10 @@
       <th>Entrada</th>
       <th>Salida</th>
       <th>Estado</th>
-      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+      <th></th>
+
     </tr>
   </thead>
 
@@ -21,19 +28,32 @@
       <tr>
         <td><%= caja.usuario_id %></td>
         <td><%= caja.fecha_cierre %></td>
-        <td><%= caja.apertura %></td>
-        <td><%= caja.cierre %></td>
-        <td><%= caja.entrada %></td>
-        <td><%= caja.salida %></td>
-        <td><%= caja.estado %></td>
-        <td><%= link_to 'Show', caja %></td>
-        <td><%= link_to 'Edit', edit_caja_path(caja) %></td>
-        <td><%= link_to 'Destroy', caja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= number_with_precision(caja.apertura, precision: 0, separator: ',', delimiter: '.') %></td>
+        <td><%= number_with_precision(caja.cierre, precision: 0, separator: ',', delimiter: '.') %></td>
+        <td><%= number_with_precision(caja.entrada, precision: 0, separator: ',', delimiter: '.') %></td>
+        <td><%= number_with_precision(caja.salida, precision: 0, separator: ',', delimiter: '.') %></td>
+        <% if caja.estado %>
+            <td class="text-center"><label class="label label-default">CERRADO</label></td>
+        <% else %>
+            <td class="text-center"><label class="label label-success">ABIERTO</label></td>
+        <% end %>
+        <td><%= link_to 'VER', caja %></td>
+
+        <% if caja.estado %>
+        <td></td>
+        <% else %>
+            <td><%= link_to 'CERRAR', edit_caja_path(caja) %></td>
+        <% end %>
+        <td><%= link_to 'ELIMINAR', caja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 <br>
 
-<%= link_to 'New Caja', new_caja_path %>
+<%= link_to 'NUEVA CAJA', new_caja_path  ,class: 'btn btn-success btn-sm pull-left'%>

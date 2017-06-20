@@ -35,7 +35,14 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'inicio#index'
+  cajaabierto = nil
+  cajaabierto = Caja.where(estado: 0).last
+
+  if cajaabierto != nil
+    root 'contratos#index'
+  else
+    root 'cajas#new'
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

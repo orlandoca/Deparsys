@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605233919) do
+ActiveRecord::Schema.define(version: 20170614004258) do
+
+  create_table "cajas", force: :cascade do |t|
+    t.integer  "usuario_id",   limit: 4
+    t.datetime "fecha_cierre"
+    t.integer  "apertura",     limit: 4
+    t.integer  "cierre",       limit: 4
+    t.integer  "entrada",      limit: 4
+    t.integer  "salida",       limit: 4
+    t.boolean  "estado"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "contratos", force: :cascade do |t|
     t.integer  "inquilino_id",    limit: 4
@@ -83,6 +95,16 @@ ActiveRecord::Schema.define(version: 20170605233919) do
 
   add_index "models", ["email"], name: "index_models_on_email", unique: true, using: :btree
   add_index "models", ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true, using: :btree
+
+  create_table "mov_cajas", force: :cascade do |t|
+    t.integer  "caja_id",    limit: 4
+    t.string   "concepto",   limit: 255
+    t.integer  "ingreso",    limit: 4
+    t.integer  "egreso",     limit: 4
+    t.integer  "saldo",      limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "movimientos", force: :cascade do |t|
     t.string   "contrato_id", limit: 255

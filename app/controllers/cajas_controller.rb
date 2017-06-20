@@ -15,20 +15,27 @@ class CajasController < ApplicationController
   # GET /cajas/new
   def new
     @caja = Caja.new
+    @caja.usuario_id = current_usuario.id # SE OBTIENE EL USUARIO AUTOMATICAMENTE
   end
 
   # GET /cajas/1/edit
   def edit
+    @caja.usuario_id = current_usuario.id # SE OBTIENE EL USUARIO AUTOMATICAMENTE
+    @caja.estado = 1
+
   end
 
   # POST /cajas
   # POST /cajas.json
   def create
     @caja = Caja.new(caja_params)
-
+    @caja.fecha_cierre = nil
+    @caja.entrada = @caja.apertura
+    @caja.cierre = @caja.apertura
     respond_to do |format|
       if @caja.save
-        format.html { redirect_to @caja, notice: 'Caja was successfully created.' }
+        @mov_caja = MovCaja.create!(caja_id: @caja.id, concepto: 'Apertura de caja', ingreso: @caja.apertura, egreso: 0, saldo: @caja.apertura)
+        format.html { redirect_to @caja, notice: 'CAJA ABIERTO CORRECTAMENTE.' }
         format.json { render :show, status: :created, location: @caja }
       else
         format.html { render :new }
@@ -41,6 +48,8 @@ class CajasController < ApplicationController
   # PATCH/PUT /cajas/1.json
   def update
     respond_to do |format|
+
+      @caja.fecha_cierre = Time.now
       if @caja.update(caja_params)
         format.html { redirect_to @caja, notice: 'Caja was successfully updated.' }
         format.json { render :show, status: :ok, location: @caja }
