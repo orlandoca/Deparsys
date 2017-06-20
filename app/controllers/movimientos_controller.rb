@@ -62,6 +62,7 @@ class MovimientosController < ApplicationController
   end
 
   def pagar
+
     recibo = Recibo.new
     movimiento= Movimiento.new
 
@@ -74,6 +75,9 @@ class MovimientosController < ApplicationController
       movimiento = Movimiento.find(id)
       detalle_recibo = DetalleRecibo.create!(recibo_id: recibo.id, cuota: movimiento.cuota, descripcion: "PAGO DE CUOTA NUMERO:  #{movimiento.cuota}" , total: movimiento.monto)
       movimiento.update(estado: true)
+      @caja = Caja.where(estado: 0).last #obtiene la ultima caja abierta
+      @mov_caja = MovCaja.create!(caja_id: @caja.id, concepto: detalle_recibo.descripcion, ingreso: detalle_recibo.total , egreso: 0, saldo: @caja.cierre.to_i + detalle_recibo.total)#agregar un movimiento de caja
+      @caja.update(cierre: @caja.cierre.to_i + detalle_recibo.total, entrada:  @caja.entrada.to_i + detalle_recibo.total) #actualiza el monto de caja
 
     end
     #cambiar estado al pagar la ultima cuota del departamente a disponible
@@ -83,6 +87,8 @@ class MovimientosController < ApplicationController
     if (mov != nil)
         departamento.update(estado: false)
     end
+
+
 
     respond_to do |format|
       format.html { redirect_to recibo, notice: 'SE HA GENERADO EXITOSAMENTE EL RECIBO.' }
