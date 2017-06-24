@@ -24,15 +24,15 @@
   <tbody>
     <% @contratos.each do |contrato| %>
       <tr>
-        <td><%= contrato.inquilino.nombre %></td>
+        <td><%= contrato.inquilino.nombre %> <%= contrato.inquilino.apellido %></td>
         <td><%= contrato.departamento.nombre_departamento %></td>
         <td><%= number_with_precision(contrato.departamento.precio, precision: 0, separator: ',', delimiter: '.') %></td>
         <td><%= contrato.fecha_contrato.strftime("%d/%m/%Y") %></td>
         <td><%= contrato.inicio_contrato.strftime("%d/%m/%Y") %></td>
         <td><%= contrato.fin_contrato.strftime("%d/%m/%Y") %></td>
-        <td><%= link_to glyph(:eye_open)+'', contrato %></td>
-        <td><%= link_to glyph(:pencil)+'', edit_contrato_path(contrato) %></td>
-        <td><%= link_to glyph(:remove)+'', contrato, method: :delete, data: { confirm: 'ESTAS SEGURO?' } %></td>
+        <td><%= link_to 'VER', contrato , class: "btn btn-info btn-xs" %></td>
+        <td><%= link_to 'EDITAR', edit_contrato_path(contrato), class: "btn btn-warning btn-xs" %></td>
+        <td><%= link_to 'ELIMINAR', contrato, method: :delete, data: { confirm: 'ESTAS SEGURO?' } , class: "btn btn-danger btn-xs" %></td>
       </tr>
     <% end %>
   </tbody>

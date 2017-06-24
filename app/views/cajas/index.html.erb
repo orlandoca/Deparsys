@@ -16,9 +16,8 @@
       <th>Entrada</th>
       <th>Salida</th>
       <th>Estado</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th CLASS="text-center" COLSPAN="3">ACCIONES</th>
+
 
     </tr>
   </thead>
@@ -37,12 +36,12 @@
         <% else %>
             <td class="text-center"><label class="label label-success">ABIERTO</label></td>
         <% end %>
-        <td><%= link_to 'VER', caja %></td>
+        <td><%= link_to 'VER', caja  , class: "btn btn-info btn-xs"%></td>
 
         <% if caja.estado %>
         <td></td>
         <% else %>
-            <td><%= link_to 'CERRAR', edit_caja_path(caja) %></td>
+            <td><%= link_to 'CERRAR', edit_caja_path(caja), class: "btn btn-danger btn-xs" %></td>
         <% end %>
         <td><%= link_to 'ELIMINAR', caja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -56,4 +55,4 @@
 
 <br>
 
-<%= link_to 'NUEVA CAJA', new_caja_path  ,class: 'btn btn-success btn-sm pull-left'%>
+<%= link_to 'Nueva Caja', new_caja_path  ,class: 'btn btn-success btn-sm pull-left'%>

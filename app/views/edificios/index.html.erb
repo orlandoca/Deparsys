@@ -12,9 +12,9 @@
                   <th>Nombre del Edificio</th>
                   <th>Nombre Propietario</th>
                   <th>Dirección</th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
+                  <th>VER</th>
+                  <th>EDITAR</th>
+                  <th>ELIMINAR</th>
                </tr>
             </thead>
             <tbody>
@@ -23,9 +23,10 @@
                   <td class="text-uppercase"><%= edificio.nombre_edificio %></td>
                   <td class="text-uppercase"><%= edificio.nombre_propietario %></td>
                   <td class="text-uppercase"><%= edificio.direccion %></td>
-                  <td><%= link_to glyph(:eye_open)+'', edificio %></td>
-                  <td><%= link_to glyph(:pencil)+'', edit_edificio_path(edificio) %></td>
-                  <td><%= link_to glyph(:remove)+'', edificio, method: :delete, data: { confirm: 'ESTAS SEGURO?' } %></td>
+                 <td><%= link_to 'VER', edificio , class: "btn btn-info btn-xs" %></td>
+                 <td><%= link_to 'EDITAR', edit_edificio_path(edificio), class: "btn btn-warning btn-xs" %></td>
+                 <td><%= link_to 'ELIMINAR', edificio, method: :delete, data: { confirm: 'ESTAS SEGURO?' } , class: "btn btn-danger btn-xs" %></td>
+
                </tr>
                <% end %>
             </tbody>
