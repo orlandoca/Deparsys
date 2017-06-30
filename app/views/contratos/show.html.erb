@@ -1,6 +1,8 @@
 
-<%= link_to glyph(:pencil) + 'Editar', edit_contrato_path(@contrato) %> |
-<%= link_to 'Back', contratos_path %>
+<%= link_to glyph(:pencil) +'EDITAR', edit_caja_path(@contrato) ,class: "btn btn-warning btn-xs" %> |
+
+<%= link_to glyph(:arrow_left) + ' ATRAS', contrato_path , class: "btn btn-default btn-xs"%>
+
 <div class="col-xs-12">
     <div class="invoice-title">
         <h2>CONTRATO</h2>
@@ -10,28 +12,28 @@
     <div class="row">
         <div class="col-lg-4 col-md-4 col-xs-12">
             <address>
-                <strong>INQUILINO:</strong><br>
+                <strong>INQUILINO:</strong>
                 <%= @contrato.inquilino.nombre %>
                 <%= @contrato.inquilino.apellido %> <br>
             </address>
         </div>
         <div class="col-lg-4 col-md-4 col-xs-12 ">
             <address>
-                <strong>DEPARTAMENTO:</strong><br>
-               NOMBRE: <%= @contrato.departamento.nombre_departamento %>
+                <strong>DEPARTAMENTO:</strong>
+                <%= @contrato.departamento.nombre_departamento %>
             </address>
             <address>
-                <strong> EDIFICIO</strong><br>
-                NOMBRE: <%= @contrato.departamento.edificio.nombre_edificio %>
+                <strong> NOMBRE DEL EDIFICIO</strong>
+                 <%= @contrato.departamento.edificio.nombre_edificio %>
             </address>
         </div>
        <div class="col-lg-4 col-md-4 col-xs-12">
             <address>
-                <strong>FECHA CONTRATO:</strong><br>
+                <strong>FECHA CONTRATO:</strong>
                 <%= @contrato.fecha_contrato.strftime("%d/%m/%Y") %><br><br>
             </address>
             <address>
-                <strong>FIN CONTRATO:</strong><br>
+                <strong>FIN CONTRATO:</strong>
                 <%= @contrato.fin_contrato.strftime("%d/%m/%Y") %><br><br>
             </address>
         </div>
@@ -63,7 +65,7 @@
                             <td><%= check_box_tag "movimientos_id[]", movimiento.id %></td>
                             <td class="text-center"><%= movimiento.cuota %></td>
                             <td class="text-center"><%= number_with_precision(movimiento.monto, precision: 0, separator: ',', delimiter: '.') %></td>
-                            <td class="text-center"><%= movimiento.vencimiento.strftime("%m/%d/%Y") %></td>
+                            <td class="text-center"><%= movimiento.vencimiento.strftime("%d/%m/%Y") %></td>
                             <% if movimiento.estado %>
                               <td class="text-center"><label class="label label-success">Pagado</label></td>
                             <% else %>
@@ -73,7 +75,11 @@
                         <% end %>
                     </tbody>
                 </table>
-              <%= submit_tag "Pagar seleccionados"%>
+                  <div class="text-left">
+                    <%= button_tag(type: 'submit_tag', class: "btn btn-primary btn-sm") do %>
+                        PAGAR CUOTAS SELECCIONADAS
+                    <% end %>
+                  </div>
               <% end %>
             </div>
         </div>

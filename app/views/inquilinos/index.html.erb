@@ -13,17 +13,17 @@
                         <th>Apellido</th>
                         <th>Telefono</th>
                         <th>Email</th>
-                        <th>VER</th>
-                        <th>EDITAR</th>
-                        <th>ELIMINAR</th>
+                        <th>Ver</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% @inquilinos.each do |inquilino| %>
                     <tr>
                         <td><%= number_with_precision(inquilino.cedula, precision: 0, separator: ',', delimiter: '.') %></td>
-                        <td class="text-uppercase"><%= inquilino.nombre %></td>
-                        <td class="text-uppercase"><%= inquilino.apellido %></td>
+                        <td><%= inquilino.nombre %></td>
+                        <td><%= inquilino.apellido %></td>
                         <td><%= number_with_precision(inquilino.telefono, precision: 0, separator: ',', delimiter: '.') %></td>
                         <td class="text-uppercase"><%= inquilino.email %></td>
                         <td><%= link_to 'VER', inquilino , class: "btn btn-info btn-xs" %></td>

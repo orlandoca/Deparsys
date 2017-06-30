@@ -51,7 +51,7 @@ class CajasController < ApplicationController
 
       @caja.fecha_cierre = Time.now
       if @caja.update(caja_params)
-        format.html { redirect_to @caja, notice: 'Caja was successfully updated.' }
+        format.html { redirect_to @caja, notice: 'LA CAJA FUE CERRADA CORRECTAMENTE.' }
         format.json { render :show, status: :ok, location: @caja }
       else
         format.html { render :edit }

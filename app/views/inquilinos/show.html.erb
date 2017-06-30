@@ -26,7 +26,6 @@
 </p>
 
 
-<%= link_to glyph(:pencil) + 'Editar', edit_inquilino_path(@inquilino) %> |
-<%= link_to 'Back', inquilinos_path %>
+<%= link_to glyph(:pencil) + 'Editar', edit_inquilino_path(@inquilino) , class: "btn btn-warning btn-xs" %> |
 
-
+<%= link_to glyph(:arrow_left) + ' ATRAS', inquilinos_path , class: "btn btn-default btn-xs"%>

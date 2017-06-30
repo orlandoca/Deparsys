@@ -16,21 +16,22 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">DEPARSYS</a>
+            <a class="navbar-brand" href=""><b>DEPARSYS</b></a>
           </div>
           <div id="" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><%= link_to "Edificios", edificios_path %></li>
-              <li><%= link_to "Departamentos", departamentos_path  %></li>
-              <li><%= link_to "Inquilinos" , inquilinos_path %></li>
-              <li><%= link_to "Contratos", contratos_path %></li>
-              <li><%= link_to "Movimientos", movimientos_path%></li>
-              <li><%= link_to "Cajas", cajas_path%></li>
-              </li>
+              <li><%= link_to glyph(:home) + "Edificios", edificios_path %></li>
+              <!--<li><%= link_to "Departamentos", departamentos_path  %></li> -->
+              <li><%= link_to glyph(:user) + "Inquilinos " , inquilinos_path %></li>
+              <li><%= link_to glyph(:book) + "Contratos", contratos_path %></li>
+              <!--  <li><%= link_to "Movimientos", movimientos_path%></li> -->
+              <li><%= link_to glyph(:piggy_bank) + "Cajas" , cajas_path%></li>
+              <li><%= link_to glyph(:usd) + "Recibos" , recibos_path%></li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
               
-              <li><%=link_to " Salir "  , destroy_usuario_session_path, method: :delete, data: {comfirm:"ESTAS SEGURO?"} %>
+              <li><%=link_to glyph(:off) +" Salir "  , destroy_usuario_session_path, method: :delete, data: {comfirm:"ESTAS SEGURO?"} %>
               </li> 
 
             </ul>

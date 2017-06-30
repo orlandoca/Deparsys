@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Listing Mov Cajas</h1>
-
-<table>
+<div class="col-md-12">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h1 class="panel-title">Lista de los Movimientos de Caja</h1>
+    </div>
+    <div class="panel-body">
+      <table id="tabl" class="table table-striped table-hover" width="100%">
   <thead>
     <tr>
       <th>Caja</th>
@@ -10,7 +13,8 @@
       <th>Ingreso</th>
       <th>Egreso</th>
       <th>Saldo</th>
-      <th colspan="3"></th>
+      <th>Ver</th>
+
     </tr>
   </thead>
 
@@ -19,16 +23,18 @@
       <tr>
         <td><%= mov_caja.caja_id %></td>
         <td><%= mov_caja.concepto %></td>
-        <td><%= mov_caja.ingreso %></td>
-        <td><%= mov_caja.egreso %></td>
-        <td><%= mov_caja.saldo %></td>
-        <td><%= link_to 'Show', mov_caja %></td>
-        <td><%= link_to 'Edit', edit_mov_caja_path(mov_caja) %></td>
-        <td><%= link_to 'Destroy', mov_caja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <td><%= number_with_precision(mov_caja.ingreso, precision: 0, separator: ',', delimiter: '.') %></td>
+        <td><%= number_with_precision(mov_caja.egreso, precision: 0, separator: ',', delimiter: '.') %></td>
+        <td><%= number_with_precision(mov_caja.saldo, precision: 0, separator: ',', delimiter: '.') %></td>
+        <td><%= link_to 'VER', mov_caja,  class: "btn btn-info btn-xs" %></td>
+       </tr>
     <% end %>
   </tbody>
 </table>
+    </div>
+  </div>
+</div>
+</div>
 
 <br>
 

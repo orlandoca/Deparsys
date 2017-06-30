@@ -11,10 +11,10 @@
     <tr>
       <th>Usuario</th>
       <th>Fecha cierre</th>
-      <th>Apertura</th>
-      <th>Cierre</th>
-      <th>Entrada</th>
-      <th>Salida</th>
+      <th>Monto Apertura</th>
+      <th>Monto Cierre</th>
+      <th>Monto Entrada</th>
+      <th>Monto Salida</th>
       <th>Estado</th>
       <th CLASS="text-center" COLSPAN="3">ACCIONES</th>
 
@@ -41,9 +41,9 @@
         <% if caja.estado %>
         <td></td>
         <% else %>
-            <td><%= link_to 'CERRAR', edit_caja_path(caja), class: "btn btn-danger btn-xs" %></td>
+            <td><%= link_to 'CERRAR CAJA', edit_caja_path(caja), class: "btn btn-warning btn-xs" %></td>
         <% end %>
-        <td><%= link_to 'ELIMINAR', caja, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'ELIMINAR CAJA', caja,class: "btn btn-danger btn-xs", method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -55,7 +55,6 @@
     </div>
   </div>
 </div>
-</div>
 
 <div class="row">
   <div class="col-md-12">
@@ -65,7 +64,7 @@
       </div>
       <div class="panel-body">
         <div class="table-responsive">
-          <table class="table table-condensed table-hover table-striped">
+          <table class="table table-striped table-hover" width="100%">
           <thead>
           <tr>
             <th>Caja</th>
@@ -93,7 +92,9 @@
           </table>
 </div>
       </div>
+    </div>
+  </div>
 
+      <%= link_to glyph(:pencil) +'EDITAR', edit_caja_path(@caja) ,class: "btn btn-warning btn-xs" %> |
 
-<%= link_to 'Edit', edit_caja_path(@caja) %> |
-<%= link_to 'Back', cajas_path %>
+      <%= link_to glyph(:arrow_left) + ' ATRAS', caja_path , class: "btn btn-default btn-xs"%>

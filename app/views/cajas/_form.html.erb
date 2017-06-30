@@ -1,3 +1,5 @@
+
+<center>
 <%= form_for(@caja) do |f| %>
   <% if @caja.errors.any? %>
     <div id="error_explanation">
@@ -10,12 +12,12 @@
       </ul>
     </div>
   <% end %>
-<h1>dfjdsfksdjfsd</h1>
+<h1>este es el form de caja</h1>
   <div class="hidden">
     <%= f.label :usuario_id %><br>
     <%= f.number_field :usuario_id %>
   </div>
-  <div class="hidd">
+  <div class="hidden">
     <%= f.label :fecha_cierre %><br>
     <%= f.datetime_select :fecha_cierre %>
   </div>
@@ -39,7 +41,11 @@
     <%= f.label :estado %><br>
     <%= f.check_box :estado %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <br>
+    <div class="text-center">
+      <%= button_tag(type: 'submit', class: "btn btn-info btn-sm") do %>
+          CREAR CAJA
+      <% end %>
+    </div>
 <% end %>
+  </center>

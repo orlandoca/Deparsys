@@ -12,17 +12,17 @@
                   <th>Nombre del Edificio</th>
                   <th>Nombre Propietario</th>
                   <th>Dirección</th>
-                  <th>VER</th>
-                  <th>EDITAR</th>
-                  <th>ELIMINAR</th>
+                  <th>Ver</th>
+                  <th>Editar</th>
+                  <th>Eliminar</th>
                </tr>
             </thead>
             <tbody>
                <% @edificios.each do |edificio| %>
                <tr>
-                  <td class="text-uppercase"><%= edificio.nombre_edificio %></td>
-                  <td class="text-uppercase"><%= edificio.nombre_propietario %></td>
-                  <td class="text-uppercase"><%= edificio.direccion %></td>
+                  <td><%= edificio.nombre_edificio %></td>
+                  <td><%= edificio.nombre_propietario %></td>
+                  <td><%= edificio.direccion %></td>
                  <td><%= link_to 'VER', edificio , class: "btn btn-info btn-xs" %></td>
                  <td><%= link_to 'EDITAR', edit_edificio_path(edificio), class: "btn btn-warning btn-xs" %></td>
                  <td><%= link_to 'ELIMINAR', edificio, method: :delete, data: { confirm: 'ESTAS SEGURO?' } , class: "btn btn-danger btn-xs" %></td>

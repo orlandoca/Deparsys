@@ -45,9 +45,12 @@
     <%= f.label :estado %><br>
     <%= f.check_box :estado , readonly: "true"%>
   </div>
-    <div class="panel-footer">
-      <div class="actions">
-        <button type="submit" class="btn btn-warning btn-sm " ><i class="glyphicon glyphicon-remove-sign"></i> Cerrar Caja</button>
+
+      <div class="text-left">
+        <%= button_tag(type: 'submit', class: "btn btn-warning btn-sm") do %>
+            CERRAR CAJA
+        <% end %>
       </div>
-    </div>
+    <BR>
+
 <% end %>
