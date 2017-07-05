@@ -6,6 +6,7 @@ class CreateInquilinos < ActiveRecord::Migration
       t.string :apellido
       t.integer :telefono
       t.string :email
+      t.boolean :estado
 
       t.timestamps null: false
     end

@@ -6,6 +6,7 @@ one:
   apellido: MyString
   telefono: 1
   email: MyString
+  estado: false
 
 two:
   cedula: 1
@@ -13,3 +14,4 @@ two:
   apellido: MyString
   telefono: 1
   email: MyString
+  estado: false

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :inquilinos
+  resources :inquilinos
+  resources :inquilinos
   resources :mov_cajas
   resources :cajas
   resources :cajas
@@ -36,7 +39,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   cajaabierto = nil
-  cajaabierto = Caja.where(estado: 0).last
+  #cajaabierto = Caja.where(estado: 0).last
 
   if cajaabierto != nil
     root 'contratos#index'

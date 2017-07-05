@@ -14,6 +14,7 @@
       <th>Fecha contrato</th>
       <th>Inicio contrato</th>
       <th>Fin contrato</th>
+                  <th>Imagen</th>
       <th>Ver</th>
       <th>Editar</th>
       <th>Eliminar</th>
@@ -30,6 +31,7 @@
         <td><%= contrato.fecha_contrato.strftime("%d/%m/%Y") %></td>
         <td><%= contrato.inicio_contrato.strftime("%d/%m/%Y") %></td>
         <td><%= contrato.fin_contrato.strftime("%d/%m/%Y") %></td>
+        <td><%= contrato.imagen %></td>
         <td><%= link_to 'VER', contrato , class: "btn btn-info btn-xs" %></td>
         <td><%= link_to 'EDITAR', edit_contrato_path(contrato), class: "btn btn-warning btn-xs" %></td>
         <td><%= link_to 'ELIMINAR', contrato, method: :delete, data: { confirm: 'ESTAS SEGURO?' } , class: "btn btn-danger btn-xs" %></td>

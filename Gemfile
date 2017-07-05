@@ -61,3 +61,5 @@ gem 'foreigner'
 # Gema dE AUTOCOMPLETAR 
 gem "jquery-ui-rails"
 gem "rails4-autocomplete"
+# gema para la subir imagenes
+gem 'paperclip'

@@ -9,4 +9,5 @@ class Contrato < ActiveRecord::Base
 	validates :inquilino_id,  presence: true
 	validates :departamento_id,  presence: true
 
+
 end

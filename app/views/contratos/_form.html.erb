@@ -1,6 +1,6 @@
 <div class="panel panel-primary ">
     <div class="panel-body">
-        <%= form_for(@contrato) do |f| %>
+        <%= form_for(@contrato)  do |f| %>
         <% if @contrato.errors.any? %>
         <div id="error_explanation">
             <h2><%= pluralize(@contrato.errors.count, "error") %> prohibited this contrato from being saved:</h2>
@@ -13,9 +13,9 @@
         <% end %>
 
         <div class="field">
-          <%= f.label :inquilino_id, "Elige Inquiliino" %><br>
+          <%= f.label :inquilino_id, "Elige Inquilino" %><br>
 
-          <% inquilinos_array = Inquilino.where(:id => 1).map { |inquilino| [" #{inquilino.nombre}  #{inquilino.apellido}", inquilino.id ] }  %>
+          <% inquilinos_array = Inquilino.where(:estado => 0).map { |inquilino| [" #{inquilino.nombre},#{inquilino.apellido}", inquilino.id ] }  %>
           <%= f.select(:inquilino_id, options_for_select(inquilinos_array), {prompt: true}, {class: 'form-control input-sm '})  %>
 
         </div>
@@ -40,6 +40,12 @@
           <div class="field">
             <%= f.label :fin_contrato %><br>
             <%= f.date_select :fin_contrato , class: "form-control input-sm  " %>
+          </div>
+          <br>
+
+          <div class="field">
+            <%= f.label :imagen %><br>
+            <%= f.file_field :imagen , class: "form-control input-sm  " %>
           </div>
           <br>
 

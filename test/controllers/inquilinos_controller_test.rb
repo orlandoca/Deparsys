@@ -18,7 +18,7 @@ class InquilinosControllerTest < ActionController::TestCase
 
   test "should create inquilino" do
     assert_difference('Inquilino.count') do
-      post :create, inquilino: { apellido: @inquilino.apellido, cedula: @inquilino.cedula, email: @inquilino.email, nombre: @inquilino.nombre, telefono: @inquilino.telefono }
+      post :create, inquilino: { apellido: @inquilino.apellido, cedula: @inquilino.cedula, email: @inquilino.email, estado: @inquilino.estado, nombre: @inquilino.nombre, telefono: @inquilino.telefono }
     end
 
     assert_redirected_to inquilino_path(assigns(:inquilino))
@@ -35,7 +35,7 @@ class InquilinosControllerTest < ActionController::TestCase
   end
 
   test "should update inquilino" do
-    patch :update, id: @inquilino, inquilino: { apellido: @inquilino.apellido, cedula: @inquilino.cedula, email: @inquilino.email, nombre: @inquilino.nombre, telefono: @inquilino.telefono }
+    patch :update, id: @inquilino, inquilino: { apellido: @inquilino.apellido, cedula: @inquilino.cedula, email: @inquilino.email, estado: @inquilino.estado, nombre: @inquilino.nombre, telefono: @inquilino.telefono }
     assert_redirected_to inquilino_path(assigns(:inquilino))
   end
 

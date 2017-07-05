@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170614004258) do
+ActiveRecord::Schema.define(version: 20170701002529) do
 
   create_table "cajas", force: :cascade do |t|
     t.integer  "usuario_id",   limit: 4
@@ -32,8 +32,9 @@ ActiveRecord::Schema.define(version: 20170614004258) do
     t.date     "inicio_contrato"
     t.date     "fin_contrato"
     t.date     "vencimiento"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "imagen",          limit: 255
   end
 
   add_index "contratos", ["departamento_id"], name: "contratos_departamento_id_fk", using: :btree
@@ -74,6 +75,7 @@ ActiveRecord::Schema.define(version: 20170614004258) do
     t.string   "apellido",   limit: 255
     t.integer  "telefono",   limit: 4
     t.string   "email",      limit: 255
+    t.boolean  "estado"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
